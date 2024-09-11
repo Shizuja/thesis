@@ -18,7 +18,7 @@ int main() {
     hypergraph1.addEdge({1, 2, 3});
     hypergraph1.addEdge({0, 3});
 	
-	NetworKit::Graph cliqueExpansionGraph = NetworKit::HypergraphExpansions::cliqueExpansion(hypergraph1);
+	//NetworKit::Graph cliqueExpansionGraph = NetworKit::HypergraphExpansions::cliqueExpansion(hypergraph1);
 	
 	NetworKit::Hypergraph hypergraph2(11);
     hypergraph2.addEdge({0, 1, 8, 10});
@@ -28,7 +28,7 @@ int main() {
 	hypergraph2.addEdge({1, 8});
 	hypergraph2.addEdge({0, 2, 3, 7, 9});
 	
-	cliqueExpansionGraph = NetworKit::HypergraphExpansions::cliqueExpansion(hypergraph2);
+	//cliqueExpansionGraph = NetworKit::HypergraphExpansions::cliqueExpansion(hypergraph2);
 	
 	NetworKit::Hypergraph hypergraph3(6);
     hypergraph3.addEdge({1, 3, 4});
@@ -37,7 +37,7 @@ int main() {
 	hypergraph3.addEdge({1, 5});
 	hypergraph3.addEdge({0, 2, 3, 4});
 	
-	cliqueExpansionGraph = NetworKit::HypergraphExpansions::cliqueExpansion(hypergraph3);
+	//cliqueExpansionGraph = NetworKit::HypergraphExpansions::cliqueExpansion(hypergraph3);
 
 	
 	
@@ -47,7 +47,7 @@ int main() {
     std::cout << "Original Hypergraph:" << std::endl;
     std::cout << "Number of nodes: " << hypergraph3.numberOfNodes() << std::endl;
     std::cout << "Number of hyperedges: " << hypergraph3.numberOfEdges() << std::endl;
-
+/*
     // Print out the clique expansion details
     std::cout << "\nClique Expansion Graph:" << std::endl;
     std::cout << "Number of nodes: " << cliqueExpansionGraph.numberOfNodes() << std::endl;
@@ -57,7 +57,7 @@ int main() {
     cliqueExpansionGraph.forEdges([&](NetworKit::node u, NetworKit::node v) {
         std::cout << "Edge: " << u << " - " << v << std::endl;
     });
-/*	
+
     std::pair<NetworKit::Graph, std::map<NetworKit::node, std::pair<NetworKit::node, NetworKit::edgeid>>> lineExpansionPair = lineExpansion(hypergraph);
     NetworKit::Graph lineExpansionGraph = lineExpansionPair.first;
     std::map<NetworKit::node, std::pair<NetworKit::node, NetworKit::edgeid>> lineExpansionNodeMap = lineExpansionPair.second;

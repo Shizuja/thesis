@@ -16,8 +16,8 @@ builds:
        - args: ['make', '-j@PARALLELISM@']
      install:
        - args: ['make', 'install']
-      - name: dynamic-b-suitor
-     git: 'https://github.com/hu-macsy/cn-2024-dynamic-b-suitor-experiments.git'
+   - name: betweenness
+     git: 'https://github.com/Shizuja/thesis.git'
      requires:
        - networkit
      configure:
@@ -33,11 +33,42 @@ builds:
        - args: ['make', '-j@PARALLELISM@']
      install:
        - args: ['make', 'install']
-     extra_paths: ['@THIS_PREFIX_DIR@‘]
+     extra_paths: ['@THIS_PREFIX_DIR@']
 
 revisions:
    - name: comparison
      build_version:
-         'networkit': '20240208_dyn_b_suitor'
-         'dynamic-b-suitor': 'main'
-         'static-b-suitor': 'master' 
+         'networkit': '20240524_hypergraph_base'
+         'betweenness': 'main'
+
+instances:
+  - repo: local
+    set: real_sparse
+    items:
+      - karate.graph
+
+experiments:
+  - name: betweenness
+    use_builds: [betweenness]
+    args: ['dyn-b-suitor-comparison', '@INSTANCE@', '@EXTRA_ARGS@']
+    num_nodes: 1
+    procs_per_node: 1
+    num_threads: 24
+    stdout: out
+    environ:
+      OMP_NUM_THREADS: 24
+
+variants:
+  - axis: 'operation'
+    items:
+      - name: '1_op=insert'
+        extra_args: ['insert']
+      - name: '1_op=remove'
+        extra_args: ['remove']
+
+matrix:
+  include:
+    - experiments: [betweenness]
+      instsets: [real_sparse]
+      axes: ['operation']
+      revisions: [comparison]
