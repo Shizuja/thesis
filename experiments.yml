@@ -1,0 +1,43 @@
+builds:
+   - name: networkit
+     git: 'https://github.com/fabratu/networkit.git'
+     regenerate:
+       - args: ['git', 'submodule', 'update', '--init']
+     configure:
+       - args:
+           - 'cmake'
+           - '-DCMAKE_INSTALL_PREFIX=@THIS_PREFIX_DIR@'
+           - '-DCMAKE_BUILD_TYPE=Release'
+           - '-DNETWORKIT_CXX_STANDARD=20'
+           - '@THIS_CLONE_DIR@'
+         environ:
+             'CXX': 'g++'
+     compile:
+       - args: ['make', '-j@PARALLELISM@']
+     install:
+       - args: ['make', 'install']
+      - name: dynamic-b-suitor
+     git: 'https://github.com/hu-macsy/cn-2024-dynamic-b-suitor-experiments.git'
+     requires:
+       - networkit
+     configure:
+       - args:
+           - 'cmake'
+           - '-DCMAKE_INSTALL_PREFIX=@THIS_PREFIX_DIR@'
+           - '-DCMAKE_BUILD_TYPE=Release'
+           - '-DCMAKE_CXX_STANDARD=20'
+           - '@THIS_CLONE_DIR@'
+         environ:
+             'CXX': 'g++'
+     compile:
+       - args: ['make', '-j@PARALLELISM@']
+     install:
+       - args: ['make', 'install']
+     extra_paths: ['@THIS_PREFIX_DIR@‘]
+
+revisions:
+   - name: comparison
+     build_version:
+         'networkit': '20240208_dyn_b_suitor'
+         'dynamic-b-suitor': 'main'
+         'static-b-suitor': 'master' 
