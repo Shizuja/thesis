@@ -1,1 +1,0 @@
-/usr/bin/g++ CMakeFiles/dyn-b-suitor-comparison.dir/main.cpp.o -o CMakeFiles/CMakeRelink.dir/dyn-b-suitor-comparison  /usr/local/lib/libnetworkit.so 

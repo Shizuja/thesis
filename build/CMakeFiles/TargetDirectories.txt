@@ -1,7 +1,0 @@
-/mnt/y/vscode/cpp/thesis/build/CMakeFiles/dyn-b-suitor-comparison.dir
-/mnt/y/vscode/cpp/thesis/build/CMakeFiles/edit_cache.dir
-/mnt/y/vscode/cpp/thesis/build/CMakeFiles/rebuild_cache.dir
-/mnt/y/vscode/cpp/thesis/build/CMakeFiles/list_install_components.dir
-/mnt/y/vscode/cpp/thesis/build/CMakeFiles/install.dir
-/mnt/y/vscode/cpp/thesis/build/CMakeFiles/install/local.dir
-/mnt/y/vscode/cpp/thesis/build/CMakeFiles/install/strip.dir
