@@ -24,9 +24,9 @@ int main( int argc,      // Number of strings in array argv
             std::getline(file, line);
             std::cout << line << std::endl;
             if(firstline) {
-                hypergraph.addNodes(line)
+                hypergraph.addNodes(line);
             } else {
-                hypergraph.addEdge({line})
+                hypergraph.addEdge({line});
             }
         }
     }
