@@ -1,6 +1,6 @@
 builds:
    - name: networkit
-     git: 'https://github.com/fabratu/networkit.git'
+     git: 'https://github.com/Shizuja/networkit.git'
      regenerate:
        - args: ['git', 'submodule', 'update', '--init']
      configure:
@@ -45,7 +45,7 @@ instances:
   - repo: local
     set: real_sparse
     items:
-      - karate.graph
+      - zufallszahlen.txt
 
 experiments:
   - name: betweenness
