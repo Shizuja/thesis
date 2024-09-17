@@ -19,6 +19,7 @@ int main( int argc,      // Number of strings in array argv
     std::ifstream file;
     file.open(argv[1]);
     if(file.is_open()) {
+        std::string line;
         while(file) {
             std::getline(file, line);
             std::cout << line << std::endl;
