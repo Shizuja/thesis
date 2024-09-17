@@ -40,12 +40,48 @@ int main( int argc,      // Number of strings in array argv
           char *argv[],   // Array of command-line argument strings
           char *envp[] )  // Array of environment variable strings
 {
-    
     NetworKit::Hypergraph hypergraph = readHypergraphFromFile(argv[1]);
     //print out hypergraph details
+    /*
     std::cout << "Original Hypergraph:" << std::endl;
     std::cout << "Number of nodes: " << hypergraph.numberOfNodes() << std::endl;
     std::cout << "Number of hyperedges: " << hypergraph.numberOfEdges() << std::endl;
+    */
+    std::string arg2(argv[2]);
+    std::string arg3(argv[3]);
+
+    bool normalized = false;
+    if(arg3 == "true") {
+        normalized = true;
+    }
+
+    if(arg2 == "clique") {
+
+        NetworKit::Graph cliqueExpansion = NetworKit::HypergraphExpansions::cliqueExpansion(hypergraph);
+        NetworKit::Betweenness centrality(cliqueExpansion, normalized);
+        centrality.run();
+        std::vector<NetworKit::nodeweight> scores = centrality.scores();
+        for (size_t i = 0; i < scores.size(); i++) {
+            std::cout << "Node: " << i << " Betweenness-Score: " << scores.at(i) << std::endl;
+        }
+
+    } else if(arg2 == "line") {
+        auto lineExpansion = NetworKit::HypergraphExpansions::lineExpansion(hypergraph);
+        std::vector<NetworKit::nodeweight> scores = NetworKit::HypergraphExpansions::lineExpansionBetweenness(lineExpansion.first, lineExpansion.second, normalized, false);
+        for (size_t i = 0; i < scores.size(); i++) {
+            std::cout << "Node: " << i << " Betweenness-Score: " << scores.at(i) << std::endl;
+        }
+
+    } else if(arg2 == "lineAdd") {
+
+        auto lineExpansion = NetworKit::HypergraphExpansions::lineExpansion(hypergraph);
+        std::vector<NetworKit::nodeweight> scores = NetworKit::HypergraphExpansions::lineExpansionBetweenness(lineExpansion.first, lineExpansion.second, normalized, true);
+        for (size_t i = 0; i < scores.size(); i++) {
+            std::cout << "Node: " << i << " Betweenness-Score: " << scores.at(i) << std::endl;
+        } 
+    } else {
+        std::cout << "Bitte clique oder line als Parameter angeben. Derzeit ist folgendes angegeben: " << arg2 << std::endl;
+    }
     
     return 0;
 }

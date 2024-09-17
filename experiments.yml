@@ -45,7 +45,11 @@ instances:
   - repo: local
     set: real_sparse
     items:
-      - zufallszahlen.txt
+      - hypergraph10_5.txt
+      - hypergraph100_10.txt
+      - hypergraph100_20.txt
+      - hypergraph200_20.txt
+      - hypergraph200_40.txt
 
 experiments:
   - name: betweenness
@@ -59,16 +63,24 @@ experiments:
       OMP_NUM_THREADS: 24
 
 variants:
-  - axis: 'operation'
+  - axis: 'variant'
     items:
-      - name: '1_op=insert'
-        extra_args: ['insert']
-      - name: '1_op=remove'
-        extra_args: ['remove']
+      - name: 'variant=cliqueExpansionBetweenness'
+        extra_args: ['clique', 'false']
+      - name: 'variant=lineExpansionBetweenness'
+        extra_args: ['line', 'false']
+      - name: 'variant=lineExpansionBetweennessAdditive'
+        extra_args: ['lineAdd', 'false']
+      - name: 'variant=cliqueExpansionBetweenness, normalized'
+        extra_args: ['clique', 'true']
+      - name: 'variant=lineExpansionBetweenness, normalized'
+        extra_args: ['line', 'true']
+      - name: 'variant=lineExpansionBetweennessAdditive'
+        extra_args: ['lineAdd', 'true']
 
 matrix:
   include:
     - experiments: [betweenness]
       instsets: [real_sparse]
-      axes: ['operation']
+      axes: ['variant']
       revisions: [comparison]
