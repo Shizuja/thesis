@@ -66,6 +66,7 @@ int main( int argc,      // Number of strings in array argv
         }
 
     } else if(arg2 == "line") {
+
         auto lineExpansion = NetworKit::HypergraphExpansions::lineExpansion(hypergraph);
         std::vector<NetworKit::nodeweight> scores = NetworKit::HypergraphExpansions::lineExpansionBetweenness(lineExpansion.first, lineExpansion.second, normalized, false);
         for (size_t i = 0; i < scores.size(); i++) {
