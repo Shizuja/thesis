@@ -1,5 +1,5 @@
 error: null
-signal: SIGSEGV
-status: null
+signal: null
+status: 0
 timeout: false
-walltime: 1.1359467059999133
+walltime: 19.67984365900338

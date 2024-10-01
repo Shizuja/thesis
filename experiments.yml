@@ -45,8 +45,7 @@ instances:
   - repo: local
     set: real_sparse
     items:
-      - email-Enron.hypergraph
-      - plant-pollinator-mpl-049.hypergraph
+      - example.hypergraph
 
 experiments:
   - name: betweenness
@@ -66,6 +65,8 @@ variants:
         extra_args: ['clique', 'true']
       - name: 'variant=lineExpansionBetweenness,normalized'
         extra_args: ['line', 'true']
+      - name: 'variant=lineGraphBetweenness,normalized'
+        extra_args: ['direct', 'true']
 matrix:
   include:
     - experiments: [betweenness]

@@ -65,7 +65,7 @@ int main( int argc,      // Number of strings in array argv
             std::cout << "Node: " << i << " Betweenness-Score: " << scores.at(i) << std::endl;
         }
 
-    } else if(arg2 == "line") {
+    } else if(arg2 == "lineNotAdd") {
 
         auto lineExpansion = NetworKit::HypergraphExpansions::lineExpansion(hypergraph);
         std::vector<NetworKit::nodeweight> scores = NetworKit::HypergraphExpansions::lineExpansionBetweenness(lineExpansion.first, lineExpansion.second, normalized, false);
@@ -73,15 +73,21 @@ int main( int argc,      // Number of strings in array argv
             std::cout << "Node: " << i << " Betweenness-Score: " << scores.at(i) << std::endl;
         }
 
-    } else if(arg2 == "lineAdd") {
+    } else if(arg2 == "line") {
 
         auto lineExpansion = NetworKit::HypergraphExpansions::lineExpansion(hypergraph);
         std::vector<NetworKit::nodeweight> scores = NetworKit::HypergraphExpansions::lineExpansionBetweenness(lineExpansion.first, lineExpansion.second, normalized, true);
         for (size_t i = 0; i < scores.size(); i++) {
             std::cout << "Node: " << i << " Betweenness-Score: " << scores.at(i) << std::endl;
         } 
+    } else if(arg2 == "direct") {
+
+        std::vector<NetworKit::nodeweight> scores = NetworKit::HypergraphExpansions::lineGraphBetweenness(hypergraph, normalized);
+        for (size_t i = 0; i < scores.size(); i++) {
+            std::cout << "Node: " << i << " Betweenness-Score: " << scores.at(i) << std::endl;
+        } 
     } else {
-        std::cout << "Bitte clique oder line als Parameter angeben. Derzeit ist folgendes angegeben: " << arg2 << std::endl;
+        std::cout << "Bitte clique, direct oder line als Parameter angeben. Derzeit ist folgendes angegeben: " << arg2 << std::endl;
     }
     
     return 0;
