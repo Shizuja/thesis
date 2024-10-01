@@ -45,7 +45,7 @@ instances:
   - repo: local
     set: real_sparse
     items:
-      - example.hypergraph
+      - plant-pollinator-mpl-016.hypergraph
 
 experiments:
   - name: betweenness
