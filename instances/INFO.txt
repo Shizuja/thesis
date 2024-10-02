@@ -26,8 +26,6 @@ SFHH-conference
 
 clique only:
 
-coauth-DBLP
-coauth-MAG-History
 congress-bills
 contact-high-school
 eventernote-events
