@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 find_package(PkgConfig)
 pkg_check_modules(NETWORKIT REQUIRED IMPORTED_TARGET networkit)
+message("${NETWORKIT_INCLUDE_DIRS}")
 
 add_executable(dyn-b-suitor-comparison main.cpp)
 target_include_directories(dyn-b-suitor-comparison PUBLIC "${PROJECT_SOURCE_DIR}/." ${NETWORKIT_INCLUDE_DIRS})
