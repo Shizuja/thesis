@@ -1,6 +1,6 @@
+#include <networkit/graph/Graph.hpp>
 #include <networkit/graph/Hypergraph.hpp>
 #include <networkit/graph/HypergraphExpansions.hpp>
-#include <networkit/graph/Graph.hpp>
 #include <networkit/centrality/Betweenness.hpp>
 #include <networkit/Globals.hpp>
 #include <map>
