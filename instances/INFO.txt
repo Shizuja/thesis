@@ -1,0 +1,40 @@
+Normal size:
+
+diseasome
+house-committees
+plant-pollinator-mpl-015
+plant-pollinator-mpl-016
+plant-pollinator-mpl-049
+plant-pollinator-mpl-062
+senate-committees
+
+
+clique can do them, maybe line:
+
+contact-primary-school
+disgenenet
+email-Enron
+hospital-lyon
+hypertext-conference
+InVS13
+InVS15
+malawi-village
+NDC-classes
+senate-bills
+SFHH-conference
+
+
+clique only:
+
+coauth-DBLP
+coauth-MAG-History
+congress-bills
+contact-high-school
+eventernote-events
+eventernote-places
+house-bills
+kaggle-whats-cooking
+NDC-substances
+science-gallery
+threads-ask-ubuntu
+threads-math-sx
