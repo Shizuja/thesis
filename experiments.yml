@@ -45,7 +45,13 @@ instances:
   - repo: local
     set: real_sparse
     items:
+      - diseasome.hypergraph
+      - house-committees.hypergraph
+      - plant-pollinator-mpl-015.hypergraph
       - plant-pollinator-mpl-016.hypergraph
+      - plant-pollinator-mpl-049.hypergraph
+      - plant-pollinator-mpl-062.hypergraph
+      - senate-committees.hypergraph
 
 experiments:
   - name: betweenness
