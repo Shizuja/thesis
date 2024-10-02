@@ -1,0 +1,14 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = true
+	ignorecase = true
+[submodule "extlibs/googletest"]
+	active = true
+	url = https://github.com/google/googletest.git
+[submodule "extlibs/tlx"]
+	active = true
+	url = https://github.com/tlx/tlx
+[submodule "extlibs/ttmath"]
+	active = true
+	url = https://github.com/networkit/ttmath
