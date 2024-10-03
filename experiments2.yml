@@ -1,0 +1,81 @@
+builds:
+   - name: networkit
+     git: 'https://github.com/Shizuja/networkit.git'
+     regenerate:
+       - args: ['git', 'submodule', 'update', '--init']
+     configure:
+       - args:
+           - 'cmake'
+           - '-DCMAKE_INSTALL_PREFIX=@THIS_PREFIX_DIR@'
+           - '-DCMAKE_BUILD_TYPE=Release'
+           - '-DNETWORKIT_CXX_STANDARD=20'
+           - '@THIS_CLONE_DIR@'
+         environ:
+             'CXX': 'g++'
+     compile:
+       - args: ['make', '-j@PARALLELISM@']
+     install:
+       - args: ['make', 'install']
+   - name: betweenness
+     git: 'https://github.com/Shizuja/thesis.git'
+     requires:
+       - networkit
+     configure:
+       - args:
+           - 'cmake'
+           - '-DCMAKE_INSTALL_PREFIX=@THIS_PREFIX_DIR@'
+           - '-DCMAKE_BUILD_TYPE=Release'
+           - '-DCMAKE_CXX_STANDARD=20'
+           - '@THIS_CLONE_DIR@'
+         environ:
+             'CXX': 'g++'
+     compile:
+       - args: ['make', '-j@PARALLELISM@']
+     install:
+       - args: ['make', 'install']
+     extra_paths: ['@THIS_PREFIX_DIR@']
+
+revisions:
+   - name: comparison
+     build_version:
+         'networkit': '20240524_hypergraph_base'
+         'betweenness': 'main'
+
+instances:
+  - repo: local
+    set: real_sparse
+    items:
+      - contact-primary-school
+      - hospital-lyon
+      - hypertext-conference
+      - InVS13
+      - InVS15
+      - malawi-village
+      - NDC-classes
+      - senate-bills
+      - SFHH-conference
+
+experiments:
+  - name: betweenness
+    use_builds: [betweenness]
+    args: ['dyn-b-suitor-comparison', '@INSTANCE@', '@EXTRA_ARGS@']
+    num_nodes: 1
+    procs_per_node: 1
+    num_threads: 24
+    stdout: out
+    environ:
+      OMP_NUM_THREADS: 24
+
+variants:
+  - axis: 'variant'
+    items:
+      - name: 'variant=lineGraphBetweenness,normalized'
+        extra_args: ['direct', 'true']
+      - name: 'variant=lineGraphBetweenness,normalized'
+        extra_args: ['direct_alt', 'true']
+matrix:
+  include:
+    - experiments: [betweenness]
+      instsets: [real_sparse]
+      axes: ['variant']
+      revisions: [comparison]

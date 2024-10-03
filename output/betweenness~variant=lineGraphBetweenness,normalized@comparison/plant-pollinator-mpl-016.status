@@ -1,5 +1,5 @@
 error: null
-signal: SIGINT
-status: null
+signal: null
+status: 0
 timeout: false
-walltime: 424.423092041
+walltime: 10.971618073999707
