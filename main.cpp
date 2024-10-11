@@ -92,9 +92,12 @@ int main( int argc,      // Number of strings in array argv
         for (size_t i = 0; i < scores.size(); i++) {
             std::cout << "Node: " << i << " Betweenness-Score: " << scores.at(i) << std::endl;
         } 
+    } else if(arg2 == "heterogeneity") {
+        
+        std::cout << NetworKit::HypergraphExpansions::hypergraphHeterogeneity(hypergraph) << std::endl;
+        
     } else {
         std::cout << "Bitte clique, direct oder line als Parameter angeben. Derzeit ist folgendes angegeben: " << arg2 << std::endl;
     }
-    
     return 0;
 }
