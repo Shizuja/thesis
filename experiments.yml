@@ -46,9 +46,25 @@ instances:
     set: real_sparse
     items:
       - algebra-questions.hypergraph
+      - contact-primary-school.hypergraph
+      - diseasome.hypergraph
+      - disgenenet.hypergraph
       - geometry-questions.hypergraph
+      - hospital-lyon.hypergraph
+      - house-committees.hypergraph
+      - hypertext-conference.hypergraph
+      - InVS13.hypergraph
       - madison-restaurant-reviews.hypergraph
+      - malawi-village.hypergraph
       - music-blues-reviews.hypergraph
+      - NDC-classes.hypergraph
+      - plant-pollinator-mpl-015.hypergraph
+      - plant-pollinator-mpl-016.hypergraph
+      - plant-pollinator-mpl-049.hypergraph
+      - plant-pollinator-mpl-062.hypergraph
+      - senate-bills.hypergraph
+      - senate-committees.hypergraph
+      - SFHH-conference.hypergraph
       - vegas-bars-reviews.hypergraph
 
 experiments:
@@ -65,12 +81,8 @@ experiments:
 variants:
   - axis: 'variant'
     items:
-      - name: 'variant=cliqueExpansionBetweenness,normalized'
-        extra_args: ['clique', 'true']
-      - name: 'variant=lineExpansionBetweenness,normalized'
-        extra_args: ['line', 'true']
-      - name: 'variant=lineGraphBetweenness,normalized'
-        extra_args: ['direct', 'true']
+      - name: 'variant=heterogeneity'
+        extra_args: ['heterogeneity']
 matrix:
   include:
     - experiments: [betweenness]

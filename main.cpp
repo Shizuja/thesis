@@ -47,14 +47,16 @@ int main( int argc,      // Number of strings in array argv
     std::cout << "Number of nodes: " << hypergraph.numberOfNodes() << std::endl;
     std::cout << "Number of hyperedges: " << hypergraph.numberOfEdges() << std::endl;
     */
+    
     std::string arg2(argv[2]);
-    std::string arg3(argv[3]);
-
+    std::string arg3(" ");
+    if (argc == 4) {
+        arg3 = argv[3];
+    }
     bool normalized = false;
     if(arg3 == "true") {
         normalized = true;
     }
-
     if(arg2 == "clique") {
 
         NetworKit::Graph cliqueExpansion = NetworKit::HypergraphExpansions::cliqueExpansion(hypergraph);
@@ -93,7 +95,6 @@ int main( int argc,      // Number of strings in array argv
             std::cout << "Node: " << i << " Betweenness-Score: " << scores.at(i) << std::endl;
         } 
     } else if(arg2 == "heterogeneity") {
-        
         std::cout << NetworKit::HypergraphExpansions::hypergraphHeterogeneity(hypergraph) << std::endl;
         
     } else {
